@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Übung 6</title>
+</head>
+<body>
+    <div>
+        <input type="text" id="newitem">
+        <button type="button" onclick="onButtonClick()">Los!</button>
+    </div>
+    <div>
+        <span>Aktuelle Werte im Array:</span>
+        <ul id="list"></ul>
+    </div>
+    <script>
+    var array = [];
+    
+    function displayValues(array) {
+        let valuesContainer = document.getElementById("list");
+        valuesContainer.innerHTML = "";
+        array.forEach(function(e) {
+            let listItem = document.createElement("li");
+            listItem.innerText = e;
+            valuesContainer.appendChild(listItem);
+        });
+    }
+
+    function onButtonClick() {
+        let inputField = document.getElementById("newitem");
+        let newItem = inputField.value;
+        inputField.value = "";
+
+        array = [
+            ...array,
+            newItem
+        ];
+
+        displayValues(array);
+    }
+
+    displayValues(array);
+    </script>
+</body>
+</html>
