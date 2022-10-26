@@ -1,9 +1,7 @@
 import { ToDo } from './todo.js';
 
 let todos = [
-  new ToDo('Zugticket kaufen', false),
-  new ToDo('Wäsche waschen', true),
-  new ToDo('Hausaufgaben machen', true),
+
 ];
 
 function updateToDoListOnScreen() {
@@ -26,7 +24,9 @@ function updateToDoListOnScreen() {
 
 document.addEventListener('DOMContentLoaded', (event) => {
   updateToDoListOnScreen();
-
+  let deleteButton =document.getElementById('aufraeumen');
+  deleteButton.addEventListener('click',deleteAll)
+  
   const neuesToDoElement = document.getElementById('neuesToDo');
   neuesToDoElement.addEventListener('keydown', (event) => {
     if (event.code === 'Enter') {
@@ -45,3 +45,16 @@ document.addEventListener('DOMContentLoaded', (event) => {
     }
   });
 });
+
+function deleteAll() {
+  let erledigteTask = Array.from(document.getElementsByClassName('erledigt'));
+  erledigteTask.forEach((element) => {
+    element.remove();
+    todos.forEach((item) => {
+      if (item.erledigt == 'true') {
+        todos.splice(todos.indexOf(item), 1);
+      }
+    });
+  });
+}
+  
