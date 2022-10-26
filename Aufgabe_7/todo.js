@@ -44,6 +44,8 @@ export class ToDo extends EventTarget {
     spanElement.innerText = this.#titel;
     buttonElement.innerText = 'Löschen';
 
+  
+
     if (this.#erledigt) {
       checkboxElement.setAttribute('checked', 'checked');
       divElement.className = 'erledigt';
@@ -51,6 +53,15 @@ export class ToDo extends EventTarget {
 
     buttonElement.addEventListener('click', () => {
       this.dispatchEvent(new Event('loeschen'));
+    });
+    checkboxElement.addEventListener('change',(event)=>{
+      if(event.currentTarget.checked){
+        listElement.className = 'erledigt';
+        this.#erledigt = 'true';
+      }else{
+        listElement.className = '';
+        this.erledigt = 'false';
+      }
     });
 
     return listElement;
