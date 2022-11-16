@@ -26,4 +26,13 @@ function updateToDoListOnScreen() {
 
 document.addEventListener("DOMContentLoaded", (event) => {
   updateToDoListOnScreen();
+  let deleteButton =document.getElementById('aufraeumen');
+  deleteButton.addEventListener('click',deleteAll)
 });
+function add(){
+  console.log("Add");
+}
+
+function deleteAll(){
+console.log("Delete all toDo's");
+}
