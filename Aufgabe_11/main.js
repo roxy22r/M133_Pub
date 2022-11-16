@@ -1,9 +1,7 @@
 import { ToDo } from './todo.js';
 
 let todos = [
-  new ToDo('Zugticket kaufen', false),
-  new ToDo('Wäsche waschen', true),
-  new ToDo('Hausaufgaben machen', true),
+
 ];
 
 function updateToDoListOnScreen() {
@@ -26,6 +24,7 @@ function updateToDoListOnScreen() {
   setTodosToLocalStorage();
 }
 
+
 document.addEventListener('DOMContentLoaded', (event) => {
   readTodoLocalStorage();
   updateToDoListOnScreen();
@@ -45,6 +44,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
         todos.splice(index, 1);
         updateToDoListOnScreen();
       });
+
+    
 
       updateToDoListOnScreen();
     }
@@ -66,12 +67,12 @@ function deleteAll() {
 
   
 function setTodosToLocalStorage(){
-  const todosItem = [];
+  const todoItems = [];
   for (const todo of todos) {
-    const todosItem = { titel: todo.titel, erledigt: todo.erledigt };
-    todosItem.push(todosItem);
+    const todoItem = { titel: todo.titel, erledigt: todo.erledigt };
+    todoItems.push(todoItem);
   }
-  const todosJson = JSON.stringify(todosItem);
+  const todosJson = JSON.stringify(todoItems);
   localStorage.setItem('todos', todosJson);
 }
 
